@@ -1,0 +1,16 @@
+{# templates/scoreboard.html #}
+
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{{board_title}}</h1>
+<ul>
+    {% for vegetable in vegetables|sort(attribute="name")
+            |sort(attribute="score", reverse=true) %}
+    <li>
+        {% if vegetable.score > 80 %}😊{% else %}😔{% endif %}
+        <em>{{ vegetable.name }}</em>: {{ vegetable.score }}/{{ max_score }}
+    </li>
+    {% endfor %}
+</ul>
+{% endblock content %}
