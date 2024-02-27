@@ -1,0 +1,18 @@
+{% macro form_generate(form) %}
+<form action="" method="post">
+    {{ form.hidden_tag() }}
+    {% for field in form if field.widget.input_type != 'hidden' %}
+        <div class="field">
+            {{ field.label }} {{ field }}
+        </div>
+
+        {% if field.errors %}
+            {% for error in field.errors %}
+                <div class="field_error">
+                    {{ error }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endfor %}
+</form>
+{% endmacro %}
