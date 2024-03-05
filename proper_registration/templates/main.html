@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block main %}
+    {% for date, events in iterable.items() %}
+        <h3>{{ date }}</h3>
+
+        <div class="single-day">
+            {% for event in events %}
+                <div class="event">
+                    {{ event }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endfor %}
+{% endblock %}
